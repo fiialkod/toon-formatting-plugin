@@ -2,6 +2,11 @@
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "fiialkod-plugins",
   "description": "Claude Code plugins by Denys Fiialko",
+  "owner": {
+    "name": "Denys Fiialko",
+    "email": "denys.fiialko@gmail.com",
+    "url": "https://github.com/fiialkod"
+  },
   "plugins": [
     {
       "name": "toon-formatting",
