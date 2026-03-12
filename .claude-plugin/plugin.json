@@ -1,0 +1,11 @@
+{
+  "name": "toon-formatting",
+  "version": "1.0.0",
+  "description": "Automatic TOON formatting for token-efficient structured data in LLM contexts",
+  "author": {
+    "name": "Denys Fiialko",
+    "email": "denys.fiialko@gmail.com"
+  },
+  "repository": "https://github.com/fiialkod/toon-formatting-plugin",
+  "license": "MIT"
+}
