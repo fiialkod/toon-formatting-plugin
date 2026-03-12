@@ -19,7 +19,15 @@ Requires the [toon MCP server](https://www.npmjs.com/package/@fiialkod/toon-mcp-
 
 ## Installation
 
-Install via Claude Code plugin marketplace, or add this repo as a custom marketplace source.
+```bash
+claude plugin add fiialkod/toon-formatting-plugin
+```
+
+Or add this repo as a custom marketplace source:
+
+```bash
+claude marketplace add https://github.com/fiialkod/toon-formatting-plugin
+```
 
 ## What it does
 
