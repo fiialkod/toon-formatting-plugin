@@ -1,0 +1,11 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "fiialkod-plugins",
+  "description": "Claude Code plugins by Denys Fiialko",
+  "plugins": [
+    {
+      "name": "toon-formatting",
+      "source": "./."
+    }
+  ]
+}
