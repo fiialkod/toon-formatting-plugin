@@ -7,7 +7,7 @@ description: Use when receiving structured JSON data from tool results (API resp
 
 ## Overview
 
-Automatically compress structured JSON data using TOON format for token efficiency. TOON typically saves 30-60% tokens vs JSON for tabular data (arrays of uniform objects).
+Automatically compress structured JSON data using the most token-efficient format. The server compares LEAN, TOON, and JSON compact, picking the best one automatically. LEAN typically saves ~49% tokens vs JSON for tabular data.
 
 ## Prerequisites
 
@@ -28,24 +28,24 @@ Requires the `toon` MCP server. Add to your Claude Code MCP settings.
 
 | Tool | Purpose |
 |------|---------|
-| `mcp__toon__toon_format_response` | Auto-pick best format (TOON vs JSON compact). Use this by default. |
-| `mcp__toon__toon_encode` | Force TOON encoding. Use when presenting data to user. |
-| `mcp__toon__toon_decode` | Convert TOON back to JSON. Use when user needs raw JSON. |
-| `mcp__toon__toon_stats` | Compare token usage across formats. Use when user asks about efficiency. |
+| `mcp__toon__lean_format_response` | Auto-pick best format (LEAN vs TOON vs JSON compact). Use this by default. |
+| `mcp__toon__lean_encode` | Force LEAN encoding. Use when presenting data to user. |
+| `mcp__toon__lean_decode` | Convert LEAN back to JSON. Use when user needs raw JSON. |
+| `mcp__toon__lean_stats` | Compare token usage across formats. Use when user asks about efficiency. |
 
 ## Core Pattern
 
 1. Receive structured JSON from a tool call
 2. Extract relevant fields (drop noise like historyId, sizeEstimate, etc.)
-3. Pass cleaned data through `toon_format_response` with a descriptive `label`
-4. Use the TOON output internally for reasoning; present a human-friendly table to the user
+3. Pass cleaned data through `lean_format_response` with a descriptive `label`
+4. Use the formatted output internally for reasoning; present a human-friendly table to the user
 
 ```
-Tool result (raw JSON) → Extract fields → toon_format_response → Reason over TOON → Present as markdown table
+Tool result (raw JSON) → Extract fields → lean_format_response → Reason over output → Present as markdown table
 ```
 
 ## Common Mistakes
 
 - **Encoding the raw response verbatim** — Strip irrelevant fields first to maximize savings
-- **Forgetting the label** — Always pass a `label` to `toon_format_response` for clarity
-- **Using toon for tiny payloads** — Under ~5 small items, JSON compact may be smaller; `toon_format_response` handles this automatically
+- **Forgetting the label** — Always pass a `label` to `lean_format_response` for clarity
+- **Using for tiny payloads** — Under ~5 small items, JSON compact may be smaller; `lean_format_response` handles this automatically
